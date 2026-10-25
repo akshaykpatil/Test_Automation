@@ -25,11 +25,22 @@ pytest -m ui
 pytest -m api
 ```
 
+To generate and open a self-contained HTML report:
+
+```powershell
+New-Item -ItemType Directory -Force .\test-results | Out-Null
+python -m pytest .\tests --html=.\test-results\pytest-report.html --self-contained-html
+Invoke-Item .\test-results\pytest-report.html
+```
+
+The report includes test results and failure details, and is saved locally in
+`test-results\pytest-report.html`.
+
 To watch the browser while UI tests run:
 
 ```powershell
 $env:HEADLESS = "false"
-pytest -m ui
+python -m pytest .\tests -m ui
 ```
 
 The target URL can be overridden with `BASE_URL`, for example:
