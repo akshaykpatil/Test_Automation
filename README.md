@@ -43,6 +43,23 @@ $env:HEADLESS = "false"
 python -m pytest .\tests -m ui
 ```
 
+## Repeated batch runs
+
+Double-click `run_tests_loop.bat` to run the full suite repeatedly. Each run
+creates a uniquely timestamped, self-contained HTML report and text log under
+`test-results\`. The batch waits five seconds between runs; close its window
+to stop it. The browser runs in headed (visible) mode. A failing test run is
+recorded and does not stop subsequent runs.
+
+To run the batch once for verification:
+
+```powershell
+.\run_tests_loop.bat --once
+```
+
+The batch uses `.venv\Scripts\python.exe` when the project virtual environment
+exists; otherwise, it uses `python` from `PATH`.
+
 The target URL can be overridden with `BASE_URL`, for example:
 
 ```powershell
